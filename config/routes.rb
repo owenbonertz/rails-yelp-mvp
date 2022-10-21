@@ -3,5 +3,18 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
-  resources :restaurants
+  ##
+  #GET 'restaurants' to: "restuarants#index"
+  #GET 'restaurants/new' to: "restaurants#new"
+  #POST 'restaurants' to: "restaurants/create"
+  #GET 'restaurants/:id' to: "restaurants#show"
+  #GET 'restaurants/:id/reviews/new' to: "reviews#new"
+  #POST 'restaurants/:id/reviews' to: "reviews#create"
+  #__END__
+
+  resources :restaurants do
+    resources :reviews, only: [:new, :create, :index]
+  end
+
+
 end
